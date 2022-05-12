@@ -1,0 +1,1063 @@
+\documentclass{article}
+\usepackage{xcolor}
+\usepackage[color,crayon,curve,frame,arrow,cmtip,line,rotate,tile,matrix,graph,poly,web,arc,knot]{xy}
+
+% ======================================================================
+% xydvips is a more complete driver than xypdf, 
+\makeatletter
+\ifx\xydriversloaded@@\xydriversloaded@none
+\ifpdf\xyoption{pdf}
+\else\xyoption{dvips}\fi
+\fi\makeatother
+% ======================================================================
+% For code copied from xy documentation
+\newenvironment{code}{\par\noindent\textbf{Example:}\par\noindent}{}
+\usepackage{comment}
+\excludecomment{BADcode}
+
+\UseCrayolaColors
+
+% Wider page, since wide columns
+\addtolength\oddsidemargin{-2cm}
+\addtolength\evensidemargin{-2cm}
+\addtolength\textwidth{2cm}
+\def\NotYet#1{\textcolor{red}{#1}}
+\begin{document}
+
+\section{Kernel}
+\subsection{Connections}
+ \xy (3,0)*{A} ; (20,6)*+{B}*\cir{} **\dir{-} \endxy
+
+\begingroup%\small
+ \def\Dx#1#2{\hbox{\def\1{#1{#2}}\enspace\tt\string\dir\codeof\1}}
+ \def\DC#1#{\DCx{#1}}
+ \def\DCx#1#2{ \Dx{#1}{#2} &
+   $\vcenter{\xy
+   0*\cir<5pt>{} ; (16,5)*=<10.1pt>{}*\frm{-} **[Red]\dir#1{.} **h\dir#1{#2}
+  \endxy}$
+% ?
+}
+ %
+ \def\DT#1#{\DTx{#1}}
+ \def\DTx#1#2{\Dx{#1}{#2} & $\vcenter{\xy
+   -(4,2.5)*{} ; (4,0)*{} **{} ?>*\dir#1{#2} **[Red]\dir#1{.}
+  \endxy}$}
+
+\subsection{Plain connectors}
+\begin{tabular}{rlrlrl}
+ \DC{-} &\DC2{-} &\DC3{-} \\
+ \DC{.} &\DC2{.} &\DC3{.} \\
+ \DC{~} &\DC2{~} &\DC3{~} \\
+ \DC{--} &\DC2{--} &\DC3{--} \\
+ \DC{~~} &\DC2{~~} &\DC3{~~} \\
+\end{tabular}
+\bigskip
+\subsection{Plain tips}
+\begin{tabular}{rlrlrlrlrl}
+ \DT{>}	 &\DT^{>} &\DT_{>} &\DT2{>} &\DT3{>} \\
+ \DT{<}	 &\DT^{<} &\DT_{<} &\DT2{<} &\DT3{<} \\
+ \DT{|}	 &\DT^{|} &\DT_{|} &\DT2{|} &\DT3{|} \\
+ \DT{(}	 &\DT^{(} &\DT_{(} \\
+ \DT{)}	 &\DT^{)} &\DT_{)} \\
+ &	 &\DT^{`} &\DT_{`} \\
+ &	 &\DT^{'} &\DT_{'}
+\end{tabular}
+\bigskip
+\subsection{Constructed tips}
+\begin{tabular}{rlrlrlrlrl}
+ \DT{>>} &\DT^{>>} &\DT_{>>} &\DT2{>>} &\DT3{>>} \\
+ \DT{<<} &\DT^{<<} &\DT_{<<} &\DT2{<<} &\DT3{<<} \\
+ \DT{||} &\DT^{||} &\DT_{||} &\DT2{||} &\DT3{||} \\
+ \DT{|-} &\DT^{|-} &\DT_{|-} &\DT2{|-} &\DT3{|-} \\
+ \DT{>|} &\DT{>>|} &\DT{|<}  &\DT{|<<} &\DT{*}	 \\
+ \DT{+}	 &\DT{x}   &\DT{/}   &\DT{//}  &\DT{o}
+\end{tabular}
+%}
+\endgroup
+%\end{document}
+\subsection{Circles}
+\begin{tabular}{cccc}
+  \xy *\cir<4pt>{} \endxy &
+  \xy *\cir<8pt>{} \endxy &
+  \xy *\cir<12pt>{} \endxy &
+  \xy *\cir<16pt>{} \endxy \\
+% I do NOT understand the partial circle spec.
+  \xy *\cir<4pt>{l^}\endxy &
+  \xy *\cir<4pt>{u^}\endxy &
+  \xy *\cir<4pt>{r^}\endxy & 
+  \xy *\cir<4pt>{d^}\endxy \\
+  \xy *\cir<4pt>{l_}\endxy &
+  \xy *\cir<4pt>{u_}\endxy &
+  \xy *\cir<4pt>{r_}\endxy & 
+  \xy *\cir<4pt>{d_}\endxy \\
+  \xy *\cir<4pt>{ul^}\endxy &
+  \xy *\cir<4pt>{ur^}\endxy &
+  \xy *\cir<4pt>{dr^}\endxy & 
+  \xy *\cir<4pt>{dl^}\endxy \\
+  \xy *\cir<4pt>{ul_}\endxy &
+  \xy *\cir<4pt>{ur_}\endxy &
+  \xy *\cir<4pt>{dr_}\endxy & 
+  \xy *\cir<4pt>{dl_}\endxy \\
+  \xy *\cir<4pt>{l^r}\endxy &
+  \xy *\cir<4pt>{l_r} \endxy \\
+  \xy *\cir<4pt>{dl_u}\endxy &
+  \xy *\cir<4pt>{dr_ur}\endxy &
+\end{tabular}
+\subsection{Text}
+\begin{tabular}{ccc}
+\xy (3,0)*\txt{A}*\frm{-}\endxy &
+\xy (3,0)*\txt{AB}*\frm{-}\endxy &
+\xy (3,0)*\txt{ABC}*\frm{-}\endxy \\
+\xy (3,0)*\txt<30pt>{A}*\frm{-}\endxy &
+\xy (3,0)*\txt<30pt>{AB}*\frm{-}\endxy &
+\xy (3,0)*\txt<30pt>{ABC}*\frm{-}\endxy \\
+\xy (3,0)*\txt\rm{A}*\frm{-}\endxy &
+\xy (3,0)*\txt\it{AB}*\frm{-}\endxy &
+\xy (3,0)*\txt\bf{ABC}*\frm{-}\endxy \\
+\xy (3,0)*\txt<30pt>\rm{A}*\frm{-}\endxy &
+\xy (3,0)*\txt<30pt>\it{AB}*\frm{-}\endxy &
+\xy (3,0)*\txt<30pt>\bf{ABC}*\frm{-}\endxy \\
+\xy (3,0)*\txt<30pt>\rm{A\\B\\C}*\frm{-}\endxy &
+\xy (3,0)*\txt<30pt>\it{AB\\CD\\EF}*\frm{-}\endxy &
+\xy (3,0)*\txt<30pt>\bf{ABC\\DEF}*\frm{-}\endxy \\
+\end{tabular}
+
+\section{Extensions}
+\subsection{\texttt{curve} Curve and Spline extensions}
+\NotYet{In Progress}
+%\usepackage[color,curve,frame,rotate,arrow]{xy}
+\def\lt{<}
+\def\gt{>}
+
+% Sample from main xyrefer
+\xy *[o]=<40pt>\hbox{Round}="o"*\frm{oo},
++<5em,-5em>@+,
+(46,11)*+\hbox{Square}="s" *\frm{-,},
+-<5em,-5em>@+,
+"o";"s" **{} ?*+\hbox{Bend}="b"*\frm{.},
+"o";"s"."b" **\crvs{-},
+"o"."b";"s" **\crvs{-} ?>*\dir{>}
+\endxy
+
+% Examples extracted from xyrefer/xycurve.doc
+\subsection{Curved connections}
+\begin{code}
+\xy (0,20)*[o]+{A};(60,0)*[o]+{B}="B" 
+**\crv{}\POS?(.4)*_+!UR{0},"B" 
+**\crv{(30,30)}\POS?*^+!D{1},"B"
+**\crv{(20,40)&(40,40)} \POS?*^+!D{2},"B" 
+**\crv{(10,20)&(30,20)&(50,-20)&(60,-10)}
+\POS?*+^!UR{4} \endxy
+\end{code}
+\begin{code}
+\xy (0,20)*+{A};(60,0)*+{B}
+**\crv{}
+**\crv{(30,30)}
+**\crv{(20,40)&(40,40)}
+**\crv{(10,20)&(30,20)&(50,-20)&(60,-10)}
+\endxy
+\end{code}
+\begin{code}
+\xy (0,20)*[o]+{A};(60,0)*[o]+{B}="B" 
+**\crv{} \POS?(.4)*_+!UR{0},"B" 
+**\crv{(30,30)} \POS?*^+!D{1},"B"
+**\crv{(20,40)&(40,40)} \POS?*^+!D{2},"B" 
+**\crv{(10,20)&(30,20)&(50,-20)&(60,-10)}
+\POS?*+^!UR{4} \endxy
+\end{code}
+\begin{code}
+\xy (0,20)*+{A};(60,0)*+{B}
+**\crv{(10,20)&(30,20)&(50,-20)&(60,-10)}
+ ?<*\dir{<} ?>*\dir{>}
+ ?(.65)*{\oplus} *!LD!/^-5pt/{x}
+ ?(.65)/12pt/*{\oplus} *!LD!/^-5pt/{x'}
+ ?(.28)*=0{\otimes}-/40pt/*+{Q}="q"
+ +/100pt/*+{P};"q" **\dir{-}
+\endxy
+\end{code}
+\begin{code}
+\def\ssz#1{\hbox{$_{^{#1}}$}}
+\xy (0,0)*+{A};(30,-10)*+{B}="B",**\dir{-},
+"B"**\crv{(5,20)&(20,25)&(35,20)}
+ ?<(0)*\dir{<}="a" ?>(1)*\dir{>}="h"
+ ?(.1)*\dir{<}="b" ?(.9)*\dir{>}="i"
+ ?(.2)*\dir{<}="c" ?(.8)*\dir{>}="j"
+ ?(.3)*\dir{<}="d" ?(.7)*\dir{>}="k"
+ ?(.4)*\dir{<}="e" ?(.6)*\dir{>}="l"
+ ?(.5)*\dir{|}="f",
+ "a"*!RC\txt{\ssz{(\lt)}};
+  "h"*!LC\txt{\ssz{\;(\gt)}},**\dir{.},
+ "b"*!RD{\ssz{.1}};
+  "i"*!L{\ssz{\;.9}},**\dir{-},
+ "c"*!RD{\ssz{.2}};
+  "j"*!L{\ssz{\;.8}},**\dir{-},
+ "d"*!RD{\ssz{.3}};
+  "k"*!L{\ssz{\;.7}},**\dir{-},
+ "e"*!RD{\ssz{.4}};
+  "l"*!LD{\ssz{.6}},**\dir{-},
+ "f"*!D!/^-3pt/{\ssz{.5}}
+\endxy
+\end{code}
+\begin{code}
+\xy (0,0)*+{A}; (50,-10)*+{B}
+**\crv{~*=<4pt>{.} (10,10)&(20,0)&(40,15)}
+**\crv{~*=<8pt>{}~**!/-5pt/\dir{>}(10,-20)
+ &(40,-15)} \endxy
+\end{code}
+\begin{code}
+\xy (0,0)*+{A};(50,-10)*+{B}
+**\crv~pC{~*=<\jot>{.}(10,-10)&(20,15)
+ &(40,15)} \endxy
+\end{code}
+\begin{code}
+\xy (0,0)*+{A};(50,-10)*+{B}
+**\crv~Lc{~**\dir{--}~*{\oplus}
+ (20,20)&(35,15)} \endxy
+\end{code}
+
+% illegal <dir>
+% And this sends all following examples into a tizzy
+\begin{code}
+\xy*+{A}="A";p+/r5pc/+(0,15)*+{B}="B"
+ ,p+<1pc,3pc>*+{C}="C"
+ ,"A"+<4pc,-1pc>*+{D}="D",{\ar@/_/"C"}
+ ,?!{"A";"B"**@{-}}*++{\oplus}
+\endxy \quad \xy 
+ *+{A}="A";p+/r5pc/+(0,15)*+{B}="B",
+ ,p+<1pc,3pc>*+{C}="C"
+ ,"A"+<4pc,-1pc>*+{D}="D","A";"B"**@{-}
+ ,?!{"D",{\ar@/_/"C"}}*++{\oplus}
+\endxy 
+\end{code}
+\begin{code}
+\xy *+{A}="A";p+/r5pc/+(0,15)*+{B}="B",
+ ,p-<.5pc,2pc>*+{C}="C","A"+<6pc,-.5pc>
+ ,*+{D}="D","A",{\ar@/_25pt/"B"}
+ ,?!{"C";"D"**@{-}}*\dir{x}="E"
+ ,+/_2pc/="F";"E"**@{-},?!{"C";"D"}
+ ,*{\otimes}\endxy\qquad\xy 
+ *+{A}="A";p+/r5pc/+(0,15)*+{B}="B",
+ ,p-<.5pc,2pc>*+{C}="C"
+ ,"A"+<7pc,.5pc>*+{D}="D","A"
+ ,{\ar@/_40pt/"B"},?!{"C";"D"**@{-}}
+ ,*{\otimes}\endxy
+\end{code}
+
+% Has problems with \nextcptlabel not defined ???
+\begin{code}
+\newcount\cptlabel\global\cptlabel=0
+\def\nextcptlabel{\global\advance\cptlabel 1 %
+ \number\cptlabel}
+\xy (0,0)*+{A}; (50,-10)*+{B}
+**\crv~Pc{~*{\nextcptlabel}(10,-10)
+ &(20,15)&(30,-15)&(40,15)} \endxy
+\end{code}
+% Not sure what this actually demonstrates.
+% Probably not yet supported?
+\begin{BADcode}
+\def\controlpts{\afterCURVE{\xyctrlpts}%
+ \readxycurve}
+\def\convexhull{\afterCURVE{\xycvxhull}%
+ \readxycurve}
+\end{BADcode}
+\subsubsection{B\'ezier quadratic splines --- squines}
+\subsubsection{B\'ezier cubic splines}
+\subsubsection{B-splines}
+\subsection{Circles and Ellipses}
+% Problems with -+.7071 isn't numeric
+\begin{code}
+\xy 0;/r5pc/:*\dir{*}
+ ;p+(.5,-.5)*\dir{*}="c"
+,**\dir{-},*+!UL{c},"c"
+,*\xycircle(1,.4){++\dir{<}}
+,*\xycircle(1,1){++\dir{>}}
+,*\xycircle<15pt,10pt>{}
+;*\xycircle<10pt>{{.}}
+\endxy
+\end{code}
+\subsection{Quadratic Splines}
+\begin{code}
+\xy /r1.5pc/:,+<5pc,3pc>*+{P};p 
+@(,+(2,2)*{+}@+, +(2,-2)*{+}@+ 
+,+(2,2)*{+}@+, +(2,0)*+{C}="C"
+,*\qspline{},"C",**\crvs{.}
+,@i @)\endxy
+\end{code}
+
+\subsection{\texttt{frame} Frame and Bracket extensions}
+\xy (3,0)*{A}*\frm{-} ; (20,6)*+{B}*\frm{o} **\dir{-} \endxy
+
+%\par\noindent
+\xy (0,0)*{A}*\frm{-} ;
+ (10,10)*+{B}*\frm{-} **\dir{-};
+ (20,20)*+{C}*\frm{-} **\dir{-};
+ (30,30)*+{D}*\frm{-} **\dir{-};
+\endxy
+%\par\noindent
+\xy (0,0)*{A}*\frm{o} ;
+ (10,10)*+{B}*\frm{o} **\dir{-};
+ (20,20)*+{C}*\frm{o} **\dir{-};
+ (30,30)*+{D}*\frm{o} **\dir{-};
+\endxy
+
+\par\noindent
+\begin{tabular}{cccc}
+    \xy (3,0)*{A}*\frm{-}\endxy
+  & \xy (3,0)*{AB}*\frm{-}\endxy
+  & \xy (3,0)*{ABC}*\frm{-}\endxy
+  & \xy (3,0)*{ABC}*[Red]\frm{-}\endxy \\
+    \xy (3,0)*{ABC}*\frm{}\endxy
+  & \xy (3,0)*{ABC}*\frm{.}\endxy
+  & \xy (3,0)*{ABC}*\frm<44pt>{.}\endxy 
+  & \xy (3,0)*{ABC}*[Green]\frm<44pt>{.}\endxy \\
+    \xy (3,0)*{ABC}*\frm{-}\endxy
+  & \xy (3,0)*{ABC}*\frm<2pt>{-}\endxy
+  & \xy (3,0)*{ABC}*\frm<44pt>{-}\endxy 
+  & \xy (3,0)*{ABC}*[Blue]\frm<44pt>{-}\endxy \\
+    \xy (3,0)*{ABC}*\frm{=}\endxy
+  & \xy (3,0)*{ABC}*\frm<2pt>{=}\endxy
+  & \xy (3,0)*{ABC}*\frm<44pt>{=}\endxy
+  & \xy (3,0)*{ABC}*[Red]\frm<44pt>{=}\endxy \\
+    \xy (3,0)*{ABC}*\frm{--}\endxy
+  & \xy (3,0)*{ABC}*\frm{o-}\endxy
+  & \xy (3,0)*{ABC}*\frm<44pt>{--}\endxy
+  & \xy (3,0)*{ABC}*[Green]\frm<44pt>{--}\endxy \\
+    \xy (3,0)*{ABC}*\frm{,}\endxy
+  & \xy (3,0)*{ABC}*\frm<2pt>{,}\endxy
+  & \xy (3,0)*{ABC}*\frm{-,}\endxy
+  & \xy (3,0)*{ABC}*[Blue]\frm{-,}\endxy \\
+    \xy (3,0)*{ABC}*\frm{o}\endxy
+  & \xy (3,0)*{ABC}*\frm<2pt>{o}\endxy
+  & \xy (3,0)*{ABC}*\frm{.o}\endxy
+  & \xy (3,0)*{ABC}*[red]\frm{.o}\endxy \\
+    \xy (3,0)*{ABC}*\frm{oo}\endxy
+  & \xy (3,0)*{ABC}*\frm<2pt>{oo}\endxy
+  & \xy (3,0)*{ABC}*\frm{-o}\endxy
+  & \xy (3,0)*{ABC}*[Green]\frm{-o}\endxy \\
+    \xy (3,0)*{ABC}*\frm{e}\endxy
+  & \xy (3,0)*{ABC}*\frm<20pt,8pt>{e}\endxy
+  & \xy (3,0)*{ABC}*\frm{.e}\endxy
+  & \xy (3,0)*{ABC}*[Blue]\frm{.e}\endxy \\
+    \xy (3,0)*{ABC}*\frm{ee}\endxy
+  & \xy (3,0)*{ABC}*\frm<20pt,8pt>{ee}\endxy
+  & \xy (3,0)*{ABC}*\frm{-e}\endxy
+  & \xy (3,0)*{ABC}*[Red]\frm{-e}\endxy \\
+    \xy (3,0)*{ABC}*\frm{*}\endxy
+  & \xy (3,0)*{ABC}*\frm{**}\endxy
+  & \xy (3,0)*{ABC}*\frm[**]{-}\endxy
+  & \xy (3,0)*{ABC}*[Green]\frm[**]{-}\endxy \\
+    \xy (3,0)*{ABC}*\frm[*]{o}\endxy
+  & \xy (3,0)*{ABC}*\frm[**]{o}\endxy
+  & \xy (3,0)*{ABC}*\frm[**]{-}\endxy
+  & \xy (3,0)*{ABC}*[Blue]\frm[**]{-}\endxy \\
+\end{tabular}
+
+\subsubsection{Brackets}
+\par\noindent
+\begin{tabular}{cccc}
+  \xy (3,0)*{ABC}*\frm{\{}\endxy 
+ & \xy (3,0)*{ABC}*\frm{\}}\endxy 
+ & \xy (3,0)*{ABC}*\frm{^\}}\endxy 
+  & \xy (3,0)*{ABC}*\frm{_\}}\endxy \\
+  \xy (3,0)*{ABC}*\frm{(}\endxy 
+ & \xy (3,0)*{ABC}*\frm{)}\endxy 
+ & \xy (3,0)*{ABC}*\frm{^)}\endxy 
+  & \xy (3,0)*{ABC}*\frm{_)}\endxy \\
+\end{tabular}
+\subsubsection{Framing as object modifier}
+  \xy *+<1.5pt>[F**:White]++[F**:Red]
+\txt{text with background}
+,+!D+/d1pc/,*++[F**:Black][White]
+\txt\bf{bold white on black}\endxy
+
+\subsection{\texttt{cmtip} Computer Moderen tip extension
+ \& \texttt{tips} More Tips extension}
+{
+\xy (3,0)*{A} ; (20,6)*+{B}
+**\dir{-}?<*\dir{<} ?>*\dir{>} \endxy
+
+\SelectTips{eu}{10}
+\xy (3,0)*{A} ; (20,6)*+{B}
+**\dir{-}?<*\dir{<} ?>*\dir{>} \endxy
+
+\xy (3,0)*{A} ; (20,6)*+{B}
+**\dir{-}?<*{\UseTips\dir{<}} ?>*{\NoTips\dir{>}} \endxy
+
+\SelectTips{lu}{10}
+\xy (3,0)*{A} ; (20,6)*+{B}
+**\dir{-}?<*{\UseTips\dir{<}} ?>*{\NoTips\dir{>}} \endxy
+}
+
+{
+\SelectTips{cm}{10}
+\xy*{} \ar
+@{*{\UseTips\dir_{<<}}-*{\NoTips\dir{>}}}
+(20,5)*{} \endxy
+}
+\begingroup%\small
+ \def\Dx#1#2{\hbox{\def\1{#1{#2}}\enspace\tt\string\dir\codeof\1}}
+ \def\DC#1#{\DCx{#1}}
+ \def\DCx#1#2{ \Dx{#1}{#2} &
+   $\vcenter{\xy
+   0*\cir<5pt>{} ; (16,5)*=<10.1pt>{}*\frm{-} **[Red]\dir#1{.} **h\dir#1{#2}
+  \endxy}$
+% ?
+}
+ %
+ \def\DT#1#{\DTx{#1}}
+ \def\DTx#1#2{\Dx{#1}{#2} & $\vcenter{\xy
+   -(4,2.5)*{} ; (4,0)*{} **{} ?>*\dir#1{#2} **[Red]\dir#1{.}
+  \endxy}$}
+
+\def\doalltips#1#2{
+\par\noindent
+\paragraph{Tips using #1, size #2}\mbox{}\\
+\SelectTips{#1}{#2}
+\UseTips
+\begin{tabular}{rlrlrlrlrl}
+ \DT{>}	 &\DT^{>} &\DT_{>} &\DT2{>} &\DT3{>} \\
+ \DT{<}	 &\DT^{<} &\DT_{<} &\DT2{<} &\DT3{<} \\
+ \DT{>>} &\DT^{>>} &\DT_{>>} &\DT2{>>} &\DT3{>>} \\
+ \DT{<<} &\DT^{<<} &\DT_{<<} &\DT2{<<} &\DT3{<<} \\
+ \DT{>|} &\DT{>>|} &\DT{|<}  &\DT{|<<} &\DT{*}	 \\
+\end{tabular}
+}
+
+\doalltips{xy}{10}
+\doalltips{cm}{10}
+\doalltips{eu}{10}
+\doalltips{lu}{10}
+\endgroup
+
+\subsection{\texttt{line} Line styles extension}
+\xycompileto{poly}%
+{/r4pc/:,*[|<5pt>][thicker]\xybox{%
+    *+(3,2){}="X"
+;@={p+CU,p+LU,p+LD,p+RD,p+RU,p+CU}
+,{0*[miter]\xypolyline{}}
+,{\xypolyline{*}},@i@)
+,"X",*+(2.5,1.5){}="X"
+,@={!CU,!LU,!LD,!RD,!RU,!CU}
+,{0*[gray][roundjoin]\xypolyline{}}
+,{0*[gray]\xypolyline{*}},@i@)
+,"X",*+(2,1){}="X"
+,@={!CU,!LU,!LD,!RD,!RU,!CU}
+,{0*[white]\xypolyline{*}}
+,{0*[bevel]\xypolyline{}},@i@)
+,"X"-(.7,0)*++\txt\LARGE{A}="a"
+,"X"+(.7,0)*++\txt\LARGE{B}="b"
+% But not yet \ar from the arrow extension!
+%,{\ar@{-}@*{[butt][thinner]}"a";"b"<1pc>}
+%,{\ar@{-}@*{[roundcap][thinner]}"a";"b"}
+%,{\ar@{-}@*{[projcap][thinner]}"a";"b"<-1pc>}
+}}    
+
+\subsection{\texttt{rotate} Rotate and Scale extension}
+
+\UseCrayolaColors
+\xy\drop[*1.25]\xybox{\POS
+(0,0)*{A};(100,40)*{B}**{}
+?<<*[@_][red][o]=<5pt>{\heartsuit};
+?>>>*[@_][Plum][o]=<3pt>{\clubsuit}
+**[|*][|.5pt][thicker]\dir{-},
+?(.1)*[left]!RD\txt{label 1}*[red]\frm{.}
+?(.2)*[!gsave newpath
+xyXpos xyYpos moveto 50 dup rlineto
+20 setlinewidth 0 0 1 setrgbcolor stroke
+grestore][psxy]{.},
+?(.2)*[@]\txt{label 2}*[red]\frm{.},
+?(.2)*[BurntOrange]{*},
+?(.3)*[halfsize]\txt{label 3}*[red]\frm{.}
+?(.375)*[flip]\txt{label 4}*[red]\frm{.}
+?(.5)*[dblsize]\txt{label 5}*[red]\frm{.}
+?(.5)*[WildStrawberry]{*},
+?(.7)*[hflip]\txt{label 6}*[red]\frm{.}
+?(.8)*[vflip]\txt{label 7}*[red]\frm{.}
+?(.9)*[right]!LD\txt{label 8}*[red]\frm{.}
+?(.5)*[@][*.66667]!/^30pt/
+\txt{special effect: aligned text}
+*[red]\frm{.}
+}\endxy
+
+\subsection{\texttt{color} Colour extension
+  \& \texttt{crayon} Crayola Colours}
+\xy
+%(20,20)="red"*[Red]{Red}*\cir{};
+(20,37)*[Red]{Red}*\cir{}="red";
+(10,20)*[Green]{Green}*\cir{}="green";
+(30,20)*[Blue]{Blue}*\cir{}="blue";
+"red";"blue"**[Magenta]\dir{-} ?>*[Magenta]\dir{>};
+"blue";"green"**[Cyan]\dir{-} ?>*[Cyan]\dir{>};
+"green";"red"**[Yellow]\dir{-} ?>*[Yellow]\dir{>}
+\endxy
+
+
+
+\subsection{\texttt{tile} Pattern and Tile extension}
+%\usepackage[all,tile]{xy}
+\begin{code}
+\AliasPattern{bricks}{mac12}{xymacpat}
+\AliasPattern{bars}{mac08}{xymacpat}
+\xy *+<5pc,3.1pc>{},{*[bricks]\frm{**}}
+ ,*+<2.5pc>[o]{},*[bars]\frm{**}
+\endxy
+\end{code}
+\begin{code}
+\UsePatternFile{xymacpat}
+\AliasPattern{bricks}{mac12}{}
+\LoadPattern{mac28}{}\LoadPattern{mac05}{}
+\xy *=0[! macfreq -45 pa][mac28][|=Bars]{}
+,*+<12pc,4pc>{}*[bricks]\frm{**}
+,-<3.5pc,0pt>,*+<2.65pc>[o]{},*[Bars]\frm{**}
+,*[thicker]\frm{o},+<6pc,0pt>
+,*+<5pc, 2.7pc>{},*[mac05]\frm{**},*\frm{-,}
+,*[white]\txt\Large\bf\sf{Kilroy\\was here}
+\endxy
+\end{code}
+
+\subsection{\texttt{import} Import graphics extension}
+\NotYet{Not yet implemented}
+
+\subsection{\texttt{movie} Movie Storyboard extension}
+\NotYet{Not yet implemented}
+\subsection{\texttt{necula} Necula's extensions}
+\NotYet{Not yet implemented}
+\subsection{\texttt{picture} LaTeX picture extensions}
+\NotYet{Not yet implemented}
+  
+\section{Features}
+\subsection{\texttt{all} All features}
+Actually includes extensions:
+\texttt{curve},
+\texttt{frame},
+\texttt{cmtip},
+\texttt{line},
+\texttt{rotate},
+\texttt{color},
+and features
+\texttt{matrix},
+\texttt{arrow},
+\texttt{graph}.
+
+\subsection{\texttt{dummy} Dummy option}
+Nothing to do here.
+\subsection{\texttt{arrow} Arrow and Path feature}
+%\usepackage{natbib,amsmath,psfrag,graphicx, subfigure, url, fancyhdr,hyperref}
+
+\begin{code}
+\xy*+{0}\PATH
+ ~={**\dir{-}}
+ ~>{|>*\dir{>}}
+ ~+{|*\dir{/}}
+ '(10,1)*+{1} '(20,-2)*+{2} (30,0)*+{3}
+\endxy
+\end{code}
+\begin{code}
+\xy *+{0} \PATH ~={**\dir{-}}
+  ~{'(20,-2)*+{2} (30,0)*+{3}} '(10,1)*+{1}
+\endxy
+\end{code}
+\begin{code}
+\xy *+{0} \PATH ~={**\dir{-}}
+  '(10,1)*+{1} '(20,-2)*+{2} (30,0)*+{3}
+\endxy
+\end{code}
+\begin{code}
+\xy *+{0} \PATH ~={**\dir{-}}
+ ~{~{(30,0)*+{3}}
+ '(20,-2)*+{2}} '(10,1)*+{1}
+\endxy
+\end{code}
+\begin{code}
+\xy <4pc,0pc>:(0,0)
+ *+\txt{base}="base"
+ \PATH ~={**\dir{-}?>*\dir{>}}
+       `l   (-1,-1)*{A} ^a
+       `     (1,-1)*{B} ^b
+       `_ul  (1, 0)*{C} ^c
+       `ul^l "base"     ^d
+             "base"     ^e
+\endxy
+\end{code}
+\begin{code}
+\xy *+{A}*\cir<10pt>{}="me"
+ \PATH `ul^ur,"me" "me" |>*:(1,-.25)\dir{>}
+\endxy
+\end{code}
+\begin{code}
+\xy(0,0)
+ \ar @{-->} (30,7) ^A="a"
+ \POS(10,12)*+\txt{label} \ar "a"
+\endxy
+\end{code}
+%\subsection{Arrows}
+\begin{code}
+\xy\ar @^{(->} (20,7)\endxy
+\end{code}
+\begin{code}
+\xy ;<1pc,0pc>:
+ \POS(0,0)*+{A}
+ \ar    +(-2,3)*+{A'}*\cir{}
+ \ar @2 +( 0,3)*+{A''}*\cir{}
+ \ar @3 +( 2,3)*+{A'''}*\cir{}
+ \POS(6,0)*+{B}
+ \ar @1{||.>>} +(-2,3)*+{B'}*\cir{}
+ \ar @2{||.>>} +( 0,3)*+{B''}*\cir{}
+ \ar @3{||.>>} +( 2,3)*+{B'''}*\cir{}
+\endxy
+\end{code}
+%\begin{code}
+\newdir{|>}{!/4.5pt/\dir{|}
+            *:(1,-.2)\dir^{>}
+            *:(1,+.2)\dir_{>}}
+%\end{code}
+\begin{code}
+\xy (0,0)*+{A}
+ \ar @{=|>} (20,3)*+{B}
+\endxy
+\end{code}
+% BUG: space should make this a tail????
+\newdir{ >}{{}*!/-5pt/\dir{>}}
+\begin{code}
+\xy (0,0)*+{A}="a", (20,3)*+{B}="b"
+ \ar @{>->}  "a";"b" < 2pt>
+ \ar @{ >->} "a";"b" <-2pt>
+\endxy
+\end{code}
+%\begin{code}
+%\newdir{ >}{{}*!/-5pt/\dir{>}}
+%\end{code}
+\begin{code}
+\xy\ar @{<^{|}>} (20,7)\endxy
+\end{code}
+\begin{code}
+\xy\ar @{{}{+}>} (20,7)\endxy
+\end{code}
+\begin{code}
+\xy\ar @{*{x}*{y}*{z}} (20,7)\endxy
+\end{code}
+\begin{code}
+\xy
+ \ar @{>>*\composite{\dir{x}*\dir{+}}<<}
+ (20,7)
+\endxy
+\end{code}
+\begin{code}
+\xy
+ \POS (0,10)  *\cir<2pt>{} ="a"
+    , (20,-10)*\cir<2pt>{} ="b"
+ \POS"a" \ar @/^1ex/ "b"|\uparrow
+ \POS"a" \ar @/_1ex/ "b"|\downarrow
+%
+ \POS (20,10) *\cir<2pt>{} ="a"
+    , (40,-10)*\cir<2pt>{} ="b"
+ \POS"a" \ar @/u1ex/ "b"|u
+ \POS"a" \ar @/d1ex/ "b"|d
+\endxy
+\end{code}
+% Missing number (Dimension)....
+\begin{code}
+\xy *{\circ}="b" \ar@(ur,ul) c
+ \ar@{.>}@(dr,ul) (20,0)*{\bullet}
+\endxy
+\end{code}
+
+\subsection{\texttt{2cell} Two-cell feature}
+\NotYet{Not yet implemented}
+\subsection{\texttt{matrix} Matrix feature}
+
+\xymatrix{
+  U \ar@/_/[ddr]_y \ar[dr] \ar@/^/[drr]^x\\
+  & X \times_Z Y \ar[d]^q \ar[r]_p
+  & X \ar[d]_f \\
+  & Y \ar[r]^g & Z }
+
+\begin{code}
+\xy
+ \xymatrix{A&B\\C&D}
+ \drop\frm{-}
+ \drop\cir<8pt>{}
+\endxy
+\end{code}
+%\subsection{New coordinate formats}
+\begin{code}
+$$\xy
+\xymatrix{
+ A \POS[];[d]**\dir{~},
+       [];[dr]**\dir{-}    \\
+ B & C \POS[];[l]**\dir{.} }
+\endxy$$
+\end{code}
+\begin{code}
+\xy
+  \xymatrix"*"{%
+   A & B \\
+   C & D }%
+  \POS*\frm{--}
+  \POS-(10,3)
+  \xymatrix{%
+   A' \ar@{.}["*"] & B' \ar@{.}["*"] \\
+   C' \ar@{.}["*"] & D' \ar@{.}["*"] }%
+  \POS*\frm{--}
+\endxy
+\end{code}
+%\subsection{Spacing and rotation}
+%\subsection{Entries}
+\begin{code}
+\xymatrix @!=1pc {
+ **[l] A\times B
+     \ar[r]^{/A} \ar[d]_{/B}
+ & B \ar[d]^{\times A}
+\\
+ A   \ar[r]_{B\times} 
+ & **[r] B\times A
+}
+\end{code}
+\begin{code}
+\entrymodifiers={=<1pc>[o][F-]}
+\xymatrix @ur {
+ A \save[];[r] **\dir{-},
+        [];[dr]**\dir{-},
+        [];[d] **\dir{-}\restore
+   & B \\
+ C & D }
+\end{code}
+\begin{code}
+\everyentry={{\the\Row,\the\Col}}
+\xymatrix @*[F]@*[o] {
+ {} \POS[];[r]**\dir{..} & \\
+ {} \POS[];[ur]**\dir{--}
+}
+\end{code}
+\begin{code}
+\xymatrix @W=3pc @H=1pc @R=0pc @*[F-] {%
+ : \save+<-4pc,1pc>*\hbox{\it root}
+     \ar[]
+   \restore
+\\
+ {\bullet}
+   \save*{}
+    \ar`r[dd]+/r4pc/`[dd][dd]
+   \restore
+\\
+ {\bullet}
+   \save*{}
+    \ar`r[d]+/r3pc/`[d]+/d2pc/
+          `[uu]+/l3pc/`[uu][uu]
+   \restore
+\\
+ 1 }
+\end{code}
+
+\subsection{\texttt{graph} Graph feature}
+
+\begin{code}
+\xygraph{
+ []A="A1" :@/^/ [r]A
+          :@/^/ [r]A
+          :@/^/ "A1" }
+\end{code}
+\begin{code}
+\newgraphescape{i}#1#2{
+ []!{+0="o#2"*=<10pt>{};p!#1**{},"o#2"
+  -/4pt/*!E\cir<2pt>{}
+  +0;p-/:a(-30)24pt/**\dir{-}="X2"
+  ;p-/:a(-60)24pt/="X1"**\dir{-}
+  ;?(.5),="i#2",
+  p-/:a(-60)24pt/**\dir{-},
+  "o#2"."i#2"."X1"."X2"}}
+\end{code}
+\begin{code}
+\xygraph{ []!iR1 ("i1"[l]x - "i1") - [r]z }
+\end{code}
+\begin{code}
+\SelectTips{cm}{}
+\objectmargin={1pt}
+\xygraph{ !{0;(.77,-.77):0}
+ !~:{@{-}|@{>}}
+ w (:[r(.6)]{x_1}
+   ,:[d]z:[r]y:[u(.6)]{x_2}:"x_1":"z"
+    :@( {"w";"z"}, {"y";"z"})"z":"x_2") }
+\end{code}
+
+\subsection{\texttt{poly} Polygon feature}
+%\usepackage[all,poly]{xy}
+
+\begin{code}
+\def\objectstyle{\scriptscriptstyle}
+\xy \xygraph{!{/r2pc/:} 
+[] !P3"A"{\bullet}
+"A1"!{+U*++!D{1}} "A2"!{+LD*+!RU{2}}
+"A3"!{+RD*+!LU{3}} "A0"
+[rrr]*{0}*\cir<5pt>{} 
+!P6"B"{~<-\cir<5pt>{}}
+"B1"1 "B2"2 "B3"3 "B4"4 "B5"5 "B6"6 "B0"
+[rrr]0 !P9"C"{~*{\xypolynode}}}\endxy
+\end{code}
+\begin{code}
+\xy /l1.5pc/:,{\xypolygon5"A"{}},
+{\xypolygon5"B"{~:{(1.875,0):}~>{}}},
+{\xypolygon5"C"{~:{(-2.95,0):}~>{}}},
+{\xypolygon5"D"{~:{(-3.75,0):}}},
+{"A1"\PATH~={**@{-}}'"B1"'"C4"'"B2"},
+{"A2"\PATH~={**@{-}}'"B2"'"C5"'"B3"},
+{"A3"\PATH~={**@{-}}'"B3"'"C1"'"B4"},
+{"A4"\PATH~={**@{-}}'"B4"'"C2"'"B5"},
+{"A5"\PATH~={**@{-}}'"B5"'"C3"'"B1"},
+"C1";"D1"**@{-},"C2";"D2"**@{-},
+"C3";"D3"**@{-},"C4";"D4"**@{-},
+"C5";"D5"**@{-} \endxy
+\end{code}
+\begin{code}
+\xy/r2pc/: ="A", +(.2,1.5)="B","A",
+{\xypolygon6{~:{(1,-.1):(0,.33)::}
+ ~<>{;"B"**@{-}}}}\endxy
+\quad \xy /r2pc/:
+{\xypolygon4"A"{~:{(0,.7)::}}},+(.7,1.1),
+{\xypolygon4"B"{~:{(.8,0):(0,.75)::}}},
+"A1";"B1"**@{.},"A2";"B2"**@{.},
+"A3";"B3"**@{.},"A4";"B4"**@{.}
+\endxy\quad \xy /r2pc/:
+{\xypolygon3"A"{~:{(0,.7)::}}},+(.7,1.1),
+{\xypolygon3"B"{~:{(-.85,0):(-.15,.8)::}}}
+,"A1"\PATH~={**@{.}}'"B2"'"A3"'"B1"
+'"A2"'"B3"'"A1" \endxy
+\end{code}
+\begin{code}
+\xy/r2pc/: {\xypolygon12{\circ}},
++/r5pc/,{\xypolygon10{~<{-}~>{}{\circ}}},
++/r5pc/,{\xypolygon8{~*{\circ}~<=}}\endxy
+\end{code} 
+\begin{code}
+\def\alphanum{\ifcase\xypolynode\or A 
+\or B\or C\or D\or E\or F\or G\or H\fi}
+\xy/r3pc/: {\xypolygon3{~={40}}},
+{\xypolygon4{~={40}~>{{--}}}},
+{\xypolygon5{~={40}}},
+{\xypolygon6{~={40}~>{{--}}}},
+{\xypolygon11{~={40}}},
+{\xypolygon50{~={40}~>.}}, +/r8pc/,
+{\xypolygon7{~<<{@{-}}~><{}
+ ~<>{|*@{x}}~*{\alphanum}
+ ~>>{_{\alpha_\xypolynode^{}}}}}
+\endxy
+\end{code}
+\begin{code}
+\xypolygon4{~:{/r5pc/:}
+ ~<>{*\frm<8pt>{o}\xypolygon4{~:{/-2pc/:}
+   ~*{\xypolyname\xypolynode}}}
+ [o]=<5pc>{\xypolynode}}
+\end{code}
+\begin{code}
+\font\msamv=msam5 at 5pt
+\def\blacktriangle{{\msamv\char'116}}
+\def\objectstyle{\scriptscriptstyle}
+\xypolygon3{~:{/r5.2pc/:}
+ ~>{}~<>{?\xypolygon3"a"{~:{(.5,0):}
+ ~>{}~<>{?\xypolygon3"b"{~:{(.5,0):}
+ ~>{}~<>{?\xypolygon3"c"{~:{(.5,0):}
+ ~>{}~<>{?\xypolygon3"d"{~:{(.5,0):}
+~<>{?*!/d.5pt/=0\hbox{\blacktriangle}}
+}} }} }} }} }
+\end{code}
+
+\subsection{\texttt{web} Lattice and web feature}
+%\usepackage[all,web]{xy}
+
+\begin{code}
+\def\latticebody{%
+\ifnum\latticeA=1 \ifnum\latticeB=-1 %
+\else\drop{\circ}\fi\else\drop{\circ}\fi}
+\xy *\xybox{0;<1.5pc,1mm>:<1mm,1.5pc>::
+,0,{\xylattice{-4}4{-3}3}
+ ,(1,-1)="a"*{\bullet}*+<2pt>!UL{a}
+ ,(-1,1)."a"*\frm{.}}="L"
+,{"L"+L \ar "L"+R*+!L{s^{(1)}}}
+,{"L"+D \ar "L"+U*+!D{s^{(2)}}}
+\endxy
+\end{code}
+\begin{code}
+\def\latticebody{%
+\ifnum\latticeA=1 \ifnum\latticeB=-1 %
+\else \drop{\circ}\fi\else
+\ifnum\latticeA=0 \ifnum\latticeB=1\else
+\drop{\circ}\fi\else\drop{\circ}\fi\fi}
+\xy +(2,2)="o",0*\xybox{%
+ 0;<3pc,1.5mm>:<0.72pc,1.65pc>::,{"o"
+ \croplattice{-4}4{-4}4{-2.6}{2.6}{-3}3}
+ ,"o"+(0,1)="a"*{\bullet}*+!D{\alpha}
+ ,"o"+(1,-1)="b"*{\bullet}*+!L{\beta}
+ ,"o"+(0,-1)="c","o"+(-1,1)="d"
+ ,"a"."c"="e",!DR*{};"a"**\dir{.}
+ ,"e",!UL*{};"c"**\dir{.}
+ ,"b"."d"="f",!DL*{};"b"**\dir{.}
+ ,"f",!UR*{};"d"**\dir{.}
+ ,"e"."f"*\frm{.}}="L","o"."L"="L"
+ ,{"L"+L \ar "L"+R*+!L{s^{(1)}}}
+ ,{"L"+D \ar "L"+U*+!D{s^{(2)}}}
+\endxy
+\end{code}
+\begin{code}
+\def\latticebody{\dimen0=\latticeX pt
+ \ifdim\dimen0>0pt \divide\dimen0 by 64
+ \dimen0=\latticeY\dimen0 \relax
+ \ifdim 0pt>\dimen0 \dimen0=-\dimen0 \fi
+ \ifdim 10pt>\dimen0 \drop{\bullet}%
+ \else\drop{.}\fi \else\drop{.}\fi}
+\xy*\xybox{0;<3pc,2.57mm>:<.83pc,2.25pc>::
+,0,{\croplattice{-3}5{-5}5
+  {-1.3}{4.5}{-3.4}{4.4}}}="L"
+,{"L"+L \ar "L"+!R*+!L{\sigma^{(1)}}}
+,{"L"+D \ar "L"+!U*+!D{\sigma^{(2)}}}
+\endxy
+\end{code}
+
+\subsection{\texttt{arc} Circle, Ellipse, Arc feature}
+%\usepackage[all,arc]{xy}
+
+\begin{code}
+\xy 0;/r5pc/:*\dir{*}="p",*+!DR{p};
+p+(.5,-.5)*\dir{*}="c",*+++!L{c}**\dir{-}
+,{\ellipse<>{:}},{\ellipse(.5){}}
+,0;(.5,.5)::,"p";"c",{\ellipse(.5){.}}
+,{\ellipse<5pt>{=}}\endxy
+\end{code}
+%\subsection{Ellipses}
+\begin{code}
+\xy 0;/r5pc/:*\dir{*},*++!DR(.5){p}
+*\frm{-};p+(.5,-.5)*\dir{*}="c",
+**\dir{-},*+!UL{c},"c",
+,{\ellipse(1,.4){:}},{\ellipse(,.75){}}
+,{\ellipse<15pt,10pt>{=}}
+;*{};{\ellipse<,10pt>{.}}\endxy
+\end{code}
+%\subsection{Drawing arcs}
+%\subsection{Circular and Elliptical Arcs}
+\begin{code}
+\xy 0;/r5pc/:*=+\dir{*}*+!UR{p};
+p+(.5,-.5)*\dir{*}="o",*+!UL{o}
+,+(0,.81)*=<6.1pt>\dir{*}*\frm{-}="c"
+,*+!DL{c},"o",**\dir{-},
+"c",{\ellipse_{}},{\ellipse^{.}}
+%
+,"o"+(1.5,.2)*\dir{*}="a"*+!UL{a}
+,"o";p+/_1pc/,**{},"a",{\ellipse_{}}
+\endxy
+\end{code}
+\begin{code}
+\xy 0;/r5pc/:*=<8.1pt>\dir{*}="p",*\frm{-}
+,*++!U{p},"p";p+(.5,-.5)*+\dir{*}="o"
+,*+!UL{o},+(0,.81)*=<8.1pt>\dir{*}="c"
+,*\frm{-},*++!L{c},"o"**\dir{-},"c"
+,{\ellipse :a(50),_:0{:}}
+,{\ellipse :a(30),_:a(-45){}}
+,{\ellipse :a(40),_{.}},
+;*{};{\ellipse :a(20),^=_{=}}\endxy
+\end{code}
+\begin{code}
+\xy 0;/r5pc/:*\dir{*}="p",*+!UR{p}
+;p+(.5,-.5)*\dir{*}="o",*++!L{o}**\dir{-}
+,p+(.5,.5)*\dir{*}="c",*++!D{c},"c"
+;p+(1,.1)*\dir{*}="q",*++!L{q}**\dir{-}
+,"o";"p",**{};"c"
+,{\ellipse![["o";"p"]],_![["q";"c"]]{}}
+,{\ellipse![["o";"p"]],![["c";"q"]]{.}}
+\endxy
+\end{code}
+\begin{code}
+\xy ;/r5pc/:*+=<10.1pt>\dir{*}="p";p*\frm{-}
+,*++!UR{p},p+(.5,-.5)*\dir{*}="o",**\dir{-}
+,*+!UL{o},+(0,.81)*=<8.1pt>\dir{*}="c"
+,*\frm{-},*++!DL{c},"c"
+,{\ellipse r,={}},{\ellipse r,=(2){.}}
+,{\ellipse r,^=(3){.}},{\ellipse r,=(-2){}}
+,{\ellipse r,=(-1){.}}\endxy
+\end{code}
+%\paragraph{Alternative curves}
+\begin{code}
+\xy 0;/r6pc/:*+\dir{*}="p",*+!UR{p},"p";
+p+(.5,-.5)*+\dir{*}="c",*+!UL{c}
+,"p"+(.825,-.25)="x"*\dir{+},"c"
+,{\xycompile{\ellipse`"x"{-}}}
+,{\xycompile{\ellipse~q`"x"^{.}}}
+,{\xycompile{\ellipse~c`"x"{.}}}
+,{\xycompile{\ellipse~c(.3)`"x"^{:}}}
+,{\xycompile{\ellipse~c(2.3)`"x"{-}}}
+,{\xycompile{\ellipse~i`"x"^{.}}}
+,{\xycompile{\ellipse~p`"x"^{-}}}
+\endxy
+\end{code}
+%\paragraph{Avoiding overflows}
+\begin{code}
+\xy 0;/r5pc/:*\dir{*}="p",*+!DR{p};
+p+(.5,-.5)*\dir{*}="c",*+!UL{c}**\dir{-}
+,"c",{\ellipse<15pt>_,=:a(45){=}}
+  ,{\ellipse<>__,=:a(30){-}}
+,{\ellipse(1,.4){.}}
+  ,{\ellipse(1,.4)_,=:a(120){-}}
+,{\ellipse(,.75){.}}
+  ,{\ellipse(,.75)_,^,^{-}}\endxy
+\end{code}
+
+\subsection{\texttt{knot} Knots and Links feature}
+%\usepackage[all,poly,knot]{xy}
+
+\begin{code}
+$$\xy 0;/r1pc/:
+ ,{\vunder\vtwist\vtwist\vunder-}\endxy
+\qquad\qquad\qquad \xy 0;/r1pc/:+(0,-1.5)
+ ,{\hover\hcross\hcross\hover-}\endxy$$
+\end{code}
+\begin{code}
+\UseComputerModernTips \knottips{FT}
+\def\Conway#1{\mathord{\nabla\Bigl[\,
+ \raise5pt\xybox{0;/r1pc/:#1}\,\Bigr]}}
+$$
+\Conway\htwist - \Conway\htwistneg
+ \;=\; -z\,\Conway\huntwist $$
+\end{code}
+\begin{code}
+\def\TrefoilA{\xygraph{!{0;/r.75pc/:}
+ !P3"a"{~>{}}!P9"b"{~:{(1.3288,0):}~>{}}
+ !P3"c"{~:{(2.5,0):}~>{}}
+ !{\vover~{"b2"}{"b1"}{"a1"}{"a3"}}
+ !{"b4";"b2"**\crv{"c1"}}
+ !{\vover~{"b5"}{"b4"}{"a2"}{"a1"}}
+ !{"b7";"b5"**\crv{"c2"}}
+ !{\vover~{"b8"}{"b7"}{"a3"}{"a2"}}
+ !{"b1";"b8"**\crv{"c3"}}}}
+%
+\def\TrefoilB{\xygraph{!{0;/r.75pc/:}
+ !P3"a"{~>{}}!P9"b"{~:{(1.3288,0):}~>{}}
+ !P3"c"{~:{(2.5,0):}~>{}}
+ !{\vover~{"b2"}{"b1"}{"a1"}{"a3"}}
+ !{\vcap~{"c1"}{"c1"}{"b4"}{"b2"}@(+.1)}
+ !{\vover~{"b5"}{"b4"}{"a2"}{"a1"}}
+ !{\vcap~{"c2"}{"c2"}{"b7"}{"b5"}@(+.2)}
+ !{\vover~{"b8"}{"b7"}{"a3"}{"a2"}}
+ !{\vcap~{"c3"}{"c3"}{"b1"}{"b8"}}}}
+%
+\def\TrefoilC{\xygraph{!{0;/r.75pc/:}
+ !P3"a"{~>{}}
+ !P12"b"{~:{(1.414,0):}~>{}}
+ !{\vover~{"b2"}{"b1"}{"a1"}{"a3"}}
+ !{\save 0;"b2"-"b5":"b5",
+   \xcaph @(+.1)\restore}
+ !{\vover~{"b6"}{"b5"}{"a2"}{"a1"}}
+ !{\save 0;"b6"-"b9":"b9",
+   \xcaph @(+.2)\restore}
+ !{\vover~{"b10"}{"b9"}{"a3"}{"a2"}}
+ !{\save 0;"b10"-"b1":"b1",
+    \xcaph @(+.3)\restore} }}
+$$\TrefoilA\quad\TrefoilB
+   \quad\TrefoilC$$
+\end{code}
+
+\subsection{\texttt{smart} Smart Path option}
+\NotYet{Not yet implemented}
+
+\subsection{\texttt{barr} Barr's diagram feature}
+\NotYet{Not yet implemented}
+
+
+\end{document}
